@@ -1,0 +1,27 @@
+- hosts: webservers
+  remote_user: ubuntu
+  become_user: root
+  become_method: sudo
+  become: yes
+
+  tasks:
+   - name: copying artifact from host to remote
+     become: true
+     copy:
+      src: /root/Docker-Project/Docker-Project-main/target/spring-petclinic-2.7.0-SNAPSHOT.jar
+      dest: /opt/chakra
+   
+   - name: installing java in remote server
+     become: yes
+     apt:
+      update_cache: yes
+      name: "{{ packages }}"
+      state: present
+     vars:
+      packages:
+        - openjdk-11-jdk
+
+   - name: running artifact in remote server
+     command:
+      cmd: java -jar spring-petclinic-2.7.0-SNAPSHOT.jar 
+     
