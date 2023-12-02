@@ -1,10 +1,11 @@
 pipeline {
-  agent any {
-    // docker {
-    //   image 'abhishekf5/maven-abhishek-docker-agent:v1'
-    //   args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
-    // }
-  }
+      agent any
+  // agent any {
+  //   docker {
+  //     image 'abhishekf5/maven-abhishek-docker-agent:v1'
+  //     args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
+  //   }
+  // }
   stages {
     stage('Checkout') {
       steps {
@@ -31,7 +32,7 @@ pipeline {
     // }
     stage('Build and Push Docker Image') {
       environment {
-        DOCKER_IMAGE = "chakri4/pet-clinic:${BUILD_NUMBER}"
+        DOCKER_IMAGE = "chakradhar-ch/Pet-clinic:${BUILD_NUMBER}"
         // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
