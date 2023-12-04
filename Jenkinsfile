@@ -21,7 +21,11 @@ pipeline {
     }
     stage('Static Code Analysis') {
       environment {
+<<<<<<< HEAD:jenkinsFile
         SONAR_URL = "http://13.233.7.231:9000/"
+=======
+        SONAR_URL = "http://43.204.235.33:9000/"
+>>>>>>> 1cb2b7128ae5a2409ca6e979c1bf1a49c6c65d71:Jenkinsfile
       }
       steps {
         withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
