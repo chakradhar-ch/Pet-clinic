@@ -66,12 +66,12 @@ pipeline {
         }
     }
 
-    stage('Cleaning Stage') {
-      steps {
-        sh 'echo cleaning Docker Images'
-        sh 'IMAGE_ID=`(docker images | grep ${BUILD_NUMBER} | awk '{print $3}')`'
-        sh 'docker rmi $IMAGE_ID'
-      }
-    }  
+    // stage('Cleaning Stage') {
+    //   steps {
+    //     sh 'echo cleaning Docker Images'
+    //     sh 'IMAGE_ID=`(docker images | grep ${BUILD_NUMBER} | awk '{print $3}')`'
+    //     sh 'docker rmi $IMAGE_ID'
+    //   }
+    // }  
   }
 }
