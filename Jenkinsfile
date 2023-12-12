@@ -46,7 +46,7 @@ pipeline {
       }
     }
       
-    stageS('Update Deployment File') {
+    stage('Update Deployment File') {
         environment {
             GIT_REPO_NAME = "Pet-clinic"
             GIT_USER_NAME = "chakri4"
