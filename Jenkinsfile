@@ -49,18 +49,18 @@ pipeline {
     stage('Update Deployment File') {
         environment {
             GIT_REPO_NAME = "Pet-clinic"
-            GIT_USER_NAME = "chakri4"
+            GIT_USER_NAME = "chakradhar-ch"
         }
         steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                 sh '''
                     git config user.email "chakri.xyz@gmail.com"
-                    git config user.name "chakri4"
+                    git config user.name "chakradhar-ch"
                     BUILD_NUMBER=${BUILD_NUMBER}
                     sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" pet-clinic-app-manifest/deployment.yaml
                     git add pet-clinic-app-manifest/deployment.yaml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:master
                 '''
             }
         }
@@ -69,8 +69,7 @@ pipeline {
     // stage('Cleaning Stage') {
     //   steps {
     //     sh 'echo cleaning Docker Images'
-    //     sh 'IMAGE_ID=`(docker images | grep ${BUILD_NUMBER} | awk '{print $3}')`'
-    //     sh 'docker rmi $IMAGE_ID'
+    //     sh 'docker images | grep pet | awk '{print $3}' | xargs docker rmi -f'
     //   }
     // }  
   }
