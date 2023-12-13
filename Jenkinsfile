@@ -66,13 +66,13 @@ pipeline {
         }
     }
 
-    stage('Cleaning Stage') {
-        steps {
-          script {
-            sh 'echo cleaning Docker Images'
-            sh 'docker images | grep pet | awk '{print $3}' | xargs docker rmi -f'
-          }
-        }
-    }  
+    // stage('Cleaning Stage') {
+    //     steps {
+    //       script {
+    //         sh 'echo cleaning Docker Images'
+    //         sh 'docker images | grep pet | awk '{print $3}' | xargs docker rmi -f'
+    //       }
+    //     }
+    // }  
   }
 }
