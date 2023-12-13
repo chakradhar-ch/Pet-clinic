@@ -69,7 +69,7 @@ pipeline {
     // stage('Cleaning Stage') {
     //     steps {
     //       
-    //         sh 'echo cleaning Docker Images'
+    //         sh 'echo cleaning Docker Images from server'
     //         sh 'docker images | grep pet | awk '{print $3}' | xargs docker rmi -f'
     //       
     //     }
