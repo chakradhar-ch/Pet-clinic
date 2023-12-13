@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: pet-clinic
-        image: chakri4/pet-clinic:replaceImageTag
+        image: chakri4/pet-clinic:2
         ports:
         - containerPort: 8080
