@@ -21,7 +21,7 @@ pipeline {
     }
     stage('Static Code Analysis') {
       environment {
-        SONAR_URL = "http://3.108.51.29:9000/"
+        SONAR_URL = "http://65.0.6.202:9000/"
       }
       steps {
         withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
@@ -66,11 +66,11 @@ pipeline {
         }
     }
 
-    // stage('Cleaning Stage') {
-    //   steps {
-    //     sh 'echo cleaning Docker Images'
-    //     sh 'docker images | grep pet | awk '{print $3}' | xargs docker rmi -f'
-    //   }
-    // }  
+    stage('Cleaning Stage') {
+        steps {
+          sh 'echo cleaning Docker Images'
+          sh 'docker images | grep pet | awk '{print $3}' | xargs docker rmi -f'
+        }
+    }  
   }
 }
