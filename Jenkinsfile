@@ -68,8 +68,10 @@ pipeline {
 
     stage('Cleaning Stage') {
         steps {
-          sh 'echo cleaning Docker Images'
-          sh 'docker images | grep pet | awk '{print $3}' | xargs docker rmi -f'
+          script {
+            sh 'echo cleaning Docker Images'
+            sh 'docker images | grep pet | awk '{print $3}' | xargs docker rmi -f'
+          }
         }
     }  
   }
